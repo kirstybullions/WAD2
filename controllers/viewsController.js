@@ -30,6 +30,10 @@ export const homePage = async (req, res, next) => {
       courses.map(async (c) => {
         const sessions = await SessionModel.listByCourse(c._id);
         const nextSession = sessions[0];
+        const nextDateTime = nextSession
+          ? new Date(`${nextSession.date}T${nextSession.time}`)
+          : null;
+
         return {
           id: c._id,
           title: c.title,
@@ -38,7 +42,7 @@ export const homePage = async (req, res, next) => {
           allowDropIn: c.allowDropIn,
           startDate: c.startDate ? fmtDateOnly(c.startDate) : "",
           endDate: c.endDate ? fmtDateOnly(c.endDate) : "",
-          nextSession: nextSession ? fmtDate(nextSession.startDateTime) : "TBA",
+          nextSession: nextDateTime ? fmtDate(nextDateTime) : "TBA",
           sessionsCount: sessions.length,
           description: c.description,
         };
@@ -89,10 +93,16 @@ export const courseDetailPage = async (req, res, next) => {
 };
 
 export const postBookCourse = async (req, res, next) => {
+  if (!req.user) {
+  return res.status(401).render("error", {
+    title: "Not signed in",
+    message: "You must be signed in to book a course."
+  });
+}
   try {
     const courseId = req.params.id;
     const booking = await bookCourseForUser(req.user._id, courseId);
-    res.redirect(`/bookings/${booking._id}?status=${booking.status}`);
+    res.redirect(`/booking-confirm/${booking._id}`);
   } catch (err) {
     res
       .status(400)
@@ -101,10 +111,16 @@ export const postBookCourse = async (req, res, next) => {
 };
 
 export const postBookSession = async (req, res, next) => {
+  if (!req.user) {
+  return res.status(401).render("error", {
+    title: "Not signed in",
+    message: "You must be signed in to book a course."
+  });
+}
   try {
     const sessionId = req.params.id;
     const booking = await bookSessionForUser(req.user._id, sessionId);
-    res.redirect(`/bookings/${booking._id}?status=${booking.status}`);
+    res.redirect(`/booking-confirm/${booking._id}`);
   } catch (err) {
     const message =
       err.code === "DROPIN_NOT_ALLOWED"
@@ -136,3 +152,5 @@ export const bookingConfirmationPage = async (req, res, next) => {
     next(err);
   }
 };
+
+

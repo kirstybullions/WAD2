@@ -15,6 +15,12 @@ export const BookingModel = {
   async cancel(id) {
     await bookingsDb.update({ _id: id }, { $set: { status: 'CANCELLED' } });
     return this.findById(id);
+  },
+  async listAll() {
+    return bookingsDb.find({}).sort({ createdAt: -1 });
+  },
+  async listBySession(sessionId) {
+  return bookingsDb.find({ sessionIds: sessionId });
   }
 };
 ``

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+<h1>{{course.title}} — Sessions</h1>
+
+{{#sessions.length}}
+<ul class="session-list">
+  {{#sessions}}
+  <li class="session-card">
+    <strong>{{date}}</strong> at {{time}}
+    <br>
+    Capacity: {{capacity}}  
+    <br>
+    Booked: {{bookedCount}}
+    <p><strong>Location:</strong> {{location}}</p>
+    <p><strong>Price:</strong> £{{price}}</p>
+
+    <form action="/sessions/{{_id}}/book" method="POST" class="book-form">
+        <button class="btn">Book Now</button>
+    </form>
+  </li>
+  {{/sessions}}
+</ul>
+{{/sessions.length}}
+
+{{^sessions.length}}
+<p>No sessions available for this course.</p>
+{{/sessions.length}}
+
+<p><a href="/courses">Back to Courses</a></p>

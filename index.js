@@ -72,14 +72,19 @@ import dotenv from "dotenv";
 import mustacheExpress from "mustache-express";
 import path from "path";
 import { fileURLToPath } from "url";
-
-// import authRoutes from './routes/auth.js';
+import session from "express-session";
+import methodOverride from "method-override";
+import authRoutes from './routes/auth.js';
+import organiserRoutes from './routes/organiser.js';
 import courseRoutes from "./routes/courses.js";
 import sessionRoutes from "./routes/sessions.js";
 import bookingRoutes from "./routes/bookings.js";
 import viewRoutes from "./routes/views.js";
-import { attachDemoUser } from "./middlewares/demoUser.js";
+
+// import { attachDemoUser } from "./middlewares/demoUser.js";
+import { attachCurrentUser } from "./middlewares/authUser.js";
 import { initDb } from "./models/_db.js";
+import { UserModel } from "./models/userModel.js";
 
 dotenv.config();
 
@@ -96,28 +101,44 @@ app.engine(
 app.set("view engine", "mustache");
 app.set("views", path.join(__dirname, "views"));
 
+
 // Body parsing
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use(methodOverride("_method"));
+
+// Sessions
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "devsecret",
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 // Static
 app.use("/static", express.static(path.join(__dirname, "public")));
 
-// Demo user
-app.use(attachDemoUser);
+// session user
+app.use(attachCurrentUser);
 
 // Health
 app.get("/health", (req, res) => res.json({ ok: true }));
 
+// SSR view routes
+app.use("/", viewRoutes);
+
 // JSON API routes
-// app.use('/auth', authRoutes);
-app.use("/courses", courseRoutes);
+app.use('/', authRoutes);
+app.use("/", organiserRoutes);
+app.use("/", courseRoutes);
 app.use("/sessions", sessionRoutes);
 app.use("/bookings", bookingRoutes);
 
-// SSR view routes
-app.use("/", viewRoutes);
+
 
 // Errors
 export const not_found = (req, res) =>
@@ -132,6 +153,8 @@ app.use(server_error);
 // Only start the server outside tests
 if (process.env.NODE_ENV !== "test") {
   await initDb();
+  await UserModel.ensureDefaultOrganiser();
+
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () =>
     console.log(`Yoga booking running on http://localhost:${PORT}`)

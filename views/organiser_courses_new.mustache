@@ -1,0 +1,39 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Add New Course</h1>
+
+<form action="/organiser/courses" method="POST">
+
+  <label>Title</label>
+  <input type="text" name="title" required>
+
+  <label>Description</label>
+  <textarea name="description" required></textarea>
+
+  <label>Level</label>
+  <select name="level" required>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Advanced">Advanced</option>
+  </select>
+
+  <label>Duration (minutes)</label>
+  <input type="number" name="duration" min="10" required>
+
+<label>Location</label>
+<input type="text" name="location" required>
+
+<label>Price (£)</label>
+<input type="number" name="price" step="0.01" required>
+<label>Start Date</label>
+  <input type="date" name="startDate" required>
+
+  <label>End Date</label>
+  <input type="date" name="endDate" required>
+<button type="submit">Create Course</button>
+</form>
+
+<p><a href="/organiser/courses">Back to Courses</a></p>

@@ -1,17 +1,20 @@
-
 {{> head}}
 {{> header}}
 
-<h1>Booking Confirmation</h1>
-<p>Your booking has been created.</p>
+<main class="container">
+  <h1>Booking Confirmation</h1>
 
-<dl class="kv">
-  <dt>ID</dt><dd>{{booking.id}}</dd>
-  <dt>Type</dt><dd>{{booking.type}}</dd>
-  <dt>Status</dt><dd>{{booking.status}}</dd>
-  <dt>Created</dt><dd>{{booking.createdAt}}</dd>
-</dl>
+  <p>Your booking has been created.</p>
 
-<p><a class="btn" href></p>
+  <div class="card">
+    <p><strong>ID:</strong> {{booking.id}}</p>
+    <p><strong>Type:</strong> {{booking.type}}</p>
+    <p><strong>Status:</strong> {{booking.status}}</p>
+    <p><strong>Created:</strong> {{booking.createdAt}}</p>
+  </div>
 
-{{>
+  <a href="/courses" class="button">Back to Courses</a>
+</main>
+
+{{> footer}}
+

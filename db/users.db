@@ -1,2 +1,7 @@
+{"name":"Admin","email":"kirsty@yoga.com","passwordHash":"$2b$10$OUPljdQTWG/keL8LXosLg.C28R/QkpbYqVGWDRAi.tRmWMKlnD4Iy","role":"organiser","createdAt":"2026-04-06T09:59:33.214Z","_id":"Cu6l2FhkNXJeaSJW"}
+{"name":"Kirsty Bullions","email":"kb@gmail.com","passwordHash":"$2b$10$EyCkI8kwkj1qFW.aock7fecoozr2j6s/JKRroxtqmH/uZmzBqrSuy","role":"student","createdAt":"2026-04-08T02:53:02.749Z","_id":"FlRtyd9OmkSJwHel"}
+{"name":"Paige cruickshanks","email":"pc@pc.com","passwordHash":"$2b$10$ncvxdbmGq5e/MHcRc0GfZ.Vxn7anTuBGhi8wlgL7lqpBmyjKSwxHq","role":"student","createdAt":"2026-04-08T05:52:56.386Z","_id":"KsXbpz2PEVZx55tU"}
+{"name":"Kirsty Bullions","email":"kb@pc.com","passwordHash":"$2b$10$7rb88AE/ANxi0PvWM40d..Lk411FqSaTkKniazpyKOLXaIa/zGGPC","role":"student","createdAt":"2026-04-08T08:00:37.405Z","_id":"j6B7jFF5RMviYwrU"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"name":"Fiona","email":"fiona@student.local","role":"student","_id":"cqhGQKxArmgTO1Se"}
+{"$$deleted":true,"_id":"KsXbpz2PEVZx55tU"}
+{"$$deleted":true,"_id":"FlRtyd9OmkSJwHel"}

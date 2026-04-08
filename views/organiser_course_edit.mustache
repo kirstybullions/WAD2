@@ -1,0 +1,33 @@
+{{> head}}
+{{> header}}
+
+<div class="wrap">
+<h1>Edit Course</h1>
+
+<form action="/organiser/courses/{{course._id}}" method="POST">
+
+  <label>Title</label>
+  <input type="text" name="title" value="{{course.title}}" required>
+
+  <label>Description</label>
+  <textarea name="description" required>{{course.description}}</textarea>
+
+  <label>Level</label>
+  <select name="level" required>
+    <option value="Beginner" {{#course.isBeginner}}selected{{/course.isBeginner}}>Beginner</option>
+    <option value="Intermediate" {{#course.isIntermediate}}selected{{/course.isIntermediate}}>Intermediate</option>
+    <option value="Advanced" {{#course.isAdvanced}}selected{{/course.isAdvanced}}>Advanced</option>
+  </select>
+
+  <label>Duration (minutes)</label>
+  <input type="number" name="duration" value="{{course.duration}}" min="10" required>
+    <label>Location</label>
+<input type="text" name="location" value="{{course.location}}" required>
+
+<label>Price (£)</label>
+<input type="number" name="price" step="0.01" value="{{course.price}}" required>
+
+<button type="submit">Save Changes</button>
+</form>
+
+<p><a href="/organiser/courses">Back to Courses</a></p>

@@ -1,0 +1,27 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Sessions for {{course.title}}</h1>
+
+<p><a href="/organiser/courses/{{course._id}}/sessions/new">Add New Session</a></p>
+
+{{#sessions.length}}
+<ul>
+    {{#sessions}}
+    <li>
+        <strong>{{date}}</strong> - {{time}} ({{capacity}} spaces)
+        <a href="/organiser/sessions/{{_id}}/edit">Edit</a>
+        <a href="/organiser/sessions/{{_id}}/delete">Delete</a>
+        <a href="/organiser/sessions/{{_id}}/participants">View Participants</a>
+    </li>
+    {{/sessions}}
+</ul>
+{{/sessions.length}}
+
+{{^sessions.length}}
+<p>No sessions yet</p>
+{{/sessions.length}}
+
+<p><a href="/organiser/courses">Back to Courses</a></p>

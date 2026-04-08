@@ -1,1 +1,8 @@
+{"courseId":"qW50eMg6vhye0Ikc","date":"2026-04-17","time":"09:30","startDateTime":"2026-04-17 09:30","endDateTime":"2026-04-17 09:30","capacity":10,"bookedCount":10,"createdAt":"2026-04-08T04:30:07.485Z","_id":"Sqdysiv5R8AlpTyC"}
 {"$$indexCreated":{"fieldName":"courseId","unique":false,"sparse":false}}
+{"courseId":"qW50eMg6vhye0Ikc","date":"2026-04-15","time":"16:05","startDateTime":"2026-04-15 16:05","endDateTime":"2026-04-15 16:05","capacity":5,"bookedCount":0,"createdAt":"2026-04-08T10:05:58.470Z","_id":"x7r4fS6nAtFbTNfL"}
+{"$$deleted":true,"_id":"x7r4fS6nAtFbTNfL"}
+{"courseId":"qW50eMg6vhye0Ikc","date":"2026-04-15","time":"14:06","startDateTime":"2026-04-15 14:06","endDateTime":"2026-04-15 14:06","capacity":2,"bookedCount":0,"createdAt":"2026-04-08T10:06:29.241Z","_id":"bZtuIa16PYyN0RJT"}
+{"courseId":"N97llQBIT5OVr5y7","date":"2026-04-15","time":"14:07","startDateTime":"2026-04-15 14:07","endDateTime":"2026-04-15 14:07","capacity":2,"bookedCount":0,"createdAt":"2026-04-08T10:07:27.347Z","_id":"xNcAs6E0hFT0uxDY"}
+{"courseId":"N97llQBIT5OVr5y7","date":"2026-04-15","time":"14:07","startDateTime":"2026-04-15 14:07","endDateTime":"2026-04-15 14:07","capacity":2,"bookedCount":1,"createdAt":"2026-04-08T10:07:27.347Z","_id":"xNcAs6E0hFT0uxDY"}
+{"courseId":"N97llQBIT5OVr5y7","date":"2026-04-15","time":"14:07","startDateTime":"2026-04-15 14:07","endDateTime":"2026-04-15 14:07","capacity":2,"bookedCount":2,"createdAt":"2026-04-08T10:07:27.347Z","_id":"xNcAs6E0hFT0uxDY"}

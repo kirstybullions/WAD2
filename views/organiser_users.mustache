@@ -1,0 +1,40 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Manage Users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+
+  {{#users}}
+  <tr>
+    <td>{{name}}</td>
+    <td>{{email}}</td>
+    <td>{{role}}</td>
+    <td>
+      {{#isStudent}}
+      <form method="POST" action="/organiser/users/{{_id}}/promote" style="display:inline;">
+        <button>Promote to Organiser</button>
+      </form>
+      {{/isStudent}}
+
+      {{#isOrganiser}}
+      <form method="POST" action="/organiser/users/{{_id}}/demote" style="display:inline;">
+        <button>Demote</button>
+      </form>
+      {{/isOrganiser}}
+
+      <form method="POST" action="/organiser/users/{{_id}}/delete" style="display:inline;">
+        <button>Delete</button>
+      </form>
+    </td>
+  </tr>
+  {{/users}}
+</table>

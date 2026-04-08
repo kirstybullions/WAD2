@@ -1,0 +1,41 @@
+{{> layout }}
+
+<h1>My Bookings</h1>
+
+{{#bookings}}
+<div class="booking-card">
+  
+  <h2>{{course.title}}</h2>
+
+  <div class="booking-details">
+    <p><strong>Date:</strong> {{session.date}}</p>
+    <p><strong>Time:</strong> {{session.time}}</p>
+  </div>
+
+  <div class="status">
+    {{#status.isConfirmed}}
+      <span class="badge badge-success">Confirmed</span>
+    {{/status.isConfirmed}}
+
+    {{#status.isWaitlisted}}
+      <span class="badge badge-warning">Waitlisted</span>
+    {{/status.isWaitlisted}}
+
+    {{#status.isCancelled}}
+      <span class="badge badge-secondary">Cancelled</span>
+    {{/status.isCancelled}}
+  </div>
+
+  {{^isCancelled}}
+  <form action="/bookings/{{_id}}" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-danger">Cancel Booking</button>
+  </form>
+  {{/isCancelled}}
+
+</div>
+{{/bookings}}
+
+{{^bookings}}
+<p>You have no bookings yet.</p>
+{{/bookings}}

@@ -1,0 +1,22 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Add Sessions for {{course.title}}</h1>
+
+<form action="/organiser/courses/{{course._id}}/sessions" method="POST">
+
+  <label>Date</label>
+  <input type="date" name="date" required>
+
+  <label>Time</label>
+  <input type = "time" name="time" required>
+
+  <label>Capacity</label>
+  <input type="number" name="capacity" min="1" required>
+
+  <button type="submit">Create Session</button>
+</form>
+
+<p><a href="/organiser/courses/{{course._id}}/sessions">Back to Sessions</a></p>

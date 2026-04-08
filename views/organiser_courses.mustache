@@ -1,0 +1,27 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Manage Courses</h1>
+
+<p>Welcome, {{user.name}} </p>
+
+<p><a href="/organiser/courses/new">Add New Course</a></p>
+
+{{#courses.length}}
+<ul>
+    {{#courses}}
+    <li>
+        <strong>{{title}}</strong> - {{level}}
+        <a href="/organiser/courses/{{_id}}/sessions">View Sessions</a>
+        <a href="/organiser/courses/{{_id}}/edit">Edit</a>
+        <a href="/organiser/courses/{{_id}}/delete">Delete</a>
+    </li>
+    {{/courses}}
+</ul>
+{{/courses.length}}
+
+{{^courses.length}}
+<p>No courses yet</p>
+{{/courses.length}}

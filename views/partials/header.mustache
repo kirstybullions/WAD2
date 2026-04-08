@@ -1,13 +1,32 @@
 <header class="site-header">
-  <div class="wrap">
-    🧘 Yoga Studio
-    <nav>
-      <a> hrefs</a>
-    </nav>
-    {{#user}}
-    <div class="user">
-      Signed in as <strong>{{ name }}</strong>
-    </div>
-    {{/user}}
-  </div>
+  <nav class="nav">
+    <a href="/" class="nav-brand">🧘Yoga Studio</a>
+
+    <ul class="nav-links">
+
+      <li><a href="/">Home</a></li>
+
+      <li><a href="/courses">Courses</a></li>
+
+      {{^currentUser}}
+        <!-- Not logged in -->
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/currentUser}}
+
+      {{#currentUser}}
+        <!-- Logged in -->
+        <li><a href="/bookings">My Bookings</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+        {{#currentUser.isOrganiser}}
+          <!-- Organiser-only -->
+          <li><a href="/organiser">Dashboard</a></li>
+          <li><a href="/organiser/courses">Manage Courses</a></li>
+          <li><a href="/organiser/users">Manage Users</a></li>
+        {{/currentUser.isOrganiser}}
+      {{/currentUser}}
+
+    </ul>
+  </nav>
 </header>

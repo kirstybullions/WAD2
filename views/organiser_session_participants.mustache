@@ -1,0 +1,32 @@
+{{> head}}
+{{> header}}
+
+
+<div class="wrap">
+<h1>Class List for {{course.title}}</h1>
+
+<p><strong>Session:</strong> {{session.startDateTime}}</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Status</th>
+  </tr>
+
+  {{#participants}}
+  <tr>
+    <td>{{name}}</td>
+    <td>{{email}}</td>
+    <td>{{status}}</td>
+  </tr>
+  {{/participants}}
+
+  {{^participants}}
+  <tr>
+    <td colspan="3">No participants yet.</td>
+  </tr>
+  {{/participants}}
+</table>
+
+<a href="/organiser/courses/{{course._id}}/sessions">Back to Sessions</a>
